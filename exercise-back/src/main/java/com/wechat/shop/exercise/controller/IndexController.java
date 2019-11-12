@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @description: 页面controller
+ * @description: 首页controller层
  * @auther: bald ass
  * @date: 2019/10/21 21:52
  */
@@ -15,7 +15,7 @@ public class IndexController {
     @Value("${welcome.words}")
     private String welcome;
 
-    @RequestMapping("")
+    @RequestMapping(value = "")
     @ResponseBody
     public String welcomePage() {
         return welcome;
