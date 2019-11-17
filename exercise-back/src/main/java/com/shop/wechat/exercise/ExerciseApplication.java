@@ -1,4 +1,4 @@
-package com.wechat.shop.exercise;
+package com.shop.wechat.exercise;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ExerciseApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ExerciseApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(ExerciseApplication.class, args);
+	}
+
 }
