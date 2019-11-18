@@ -11,6 +11,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -18,9 +19,8 @@ import java.util.Map;
 
 /**
  * @description: durid 配置
- * @auther: bald ass
- * @date: 2019/11/18 2:04
  */
+@PropertySource(value = {"classpath:config/druid.properties"})
 @Configuration
 public class DruidConfig {
     private static final Logger log = LoggerFactory.getLogger(DruidConfig.class);
@@ -35,12 +35,15 @@ public class DruidConfig {
     private String allowIp;
 
     /**必须配置数据源，不然无法获取到sql监控，与sql防火墙监控*/
-    @Bean(name = "default_databaseSource")
-    @ConfigurationProperties(prefix="spring.datasource")
+    @Bean
+
+    @ConfigurationProperties(prefix="druid")
     public DataSource druidDataSource() {
         return new DruidDataSource();
     }
-
+    /**
+     * 配置监控服务器
+     */
     @Bean
     public ServletRegistrationBean druidServlet() {
         log.info("init Druid Servlet Configuration ");
@@ -56,7 +59,9 @@ public class DruidConfig {
         servletRegistrationBean.setInitParameters(initParameters);
         return servletRegistrationBean;
     }
-
+    /**
+     *  配置服务过滤器
+     */
     @Bean
     public FilterRegistrationBean filterRegistrationBean() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
