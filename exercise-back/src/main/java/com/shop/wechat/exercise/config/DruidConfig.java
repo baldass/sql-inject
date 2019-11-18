@@ -25,10 +25,10 @@ import java.util.Map;
 public class DruidConfig {
     private static final Logger log = LoggerFactory.getLogger(DruidConfig.class);
 
-    @Value("${druid.login.user_name}")
+    @Value("${druid.allow.username}")
     private String userName;
 
-    @Value("${druid.login.password}")
+    @Value("${druid.allow.password}")
     private String password;
 
     @Value("${druid.allow.ip}")
