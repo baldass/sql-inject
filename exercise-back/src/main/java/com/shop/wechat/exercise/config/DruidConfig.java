@@ -33,14 +33,27 @@ public class DruidConfig {
 
     @Value("${druid.allow.ip}")
     private String allowIp;
+    @Value("${spring.datasource.url}")
+    private String url;
+    @Value("${spring.datasource.username}")
+    private String username;
+    @Value("${spring.datasource.password}")
+    private String pw;
 
-    /**必须配置数据源，不然无法获取到sql监控，与sql防火墙监控*/
+    /**
+     * 必须配置数据源，不然无法获取到sql监控，与sql防火墙监控
+     */
     @Bean
 
-    @ConfigurationProperties(prefix="druid")
+    @ConfigurationProperties(prefix = "druid")
     public DataSource druidDataSource() {
-        return new DruidDataSource();
+        DruidDataSource druid = new DruidDataSource();
+        druid.setUrl(url);
+        druid.setUsername(username);
+        druid.setPassword(pw);
+        return druid;
     }
+
     /**
      * 配置监控服务器
      */
@@ -59,8 +72,9 @@ public class DruidConfig {
         servletRegistrationBean.setInitParameters(initParameters);
         return servletRegistrationBean;
     }
+
     /**
-     *  配置服务过滤器
+     * 配置服务过滤器
      */
     @Bean
     public FilterRegistrationBean filterRegistrationBean() {

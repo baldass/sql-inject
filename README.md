@@ -10,3 +10,6 @@
 + 密码: WeChat0%
 + 权限:test,wechat数据库的增删改查,去掉其他的选项以防误操。
 
+## log 
+2019.11.20 搭建 springboot+jpa+thymealf+mysql框架并实现简单例子
+
