@@ -1,12 +1,13 @@
 package com.shop.wechat.exercise.service.impl;
 
-import com.shop.wechat.exercise.entity.BannerDetail;
-import com.shop.wechat.exercise.repository.BannerRepository;
+import com.shop.wechat.exercise.dao.BannerRepository;
+import com.shop.wechat.exercise.dto.BannerDto;
+import com.shop.wechat.exercise.entity.BannerEntity;
 import com.shop.wechat.exercise.service.IndexService;
-import com.shop.wechat.exercise.utils.CollectsUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,9 +21,13 @@ public class IndexServiceImpl implements IndexService {
     private BannerRepository bannerRepository;
 
     @Override
-    public List<BannerDetail> getBannerList() {
-        Iterable<BannerDetail> banners = bannerRepository.findAll();
-        List<BannerDetail> list = CollectsUtils.iterable2List(banners);
+    public List<BannerDto> getBannerList() {
+        Iterable<BannerEntity> itr = bannerRepository.findListByState(1);
+        List<BannerDto> list = new ArrayList<>();
+        for (BannerEntity item : itr) {
+            BannerDto param = BannerDto.getBanner(item);
+            list.add(param);
+        }
         return list;
     }
 }

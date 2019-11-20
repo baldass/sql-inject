@@ -12,7 +12,7 @@ import java.util.Date;
 @Table(name = "banner_detail")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid")
 @Entity
-public class BannerDetail {
+public class BannerEntity {
     @Id
     @GeneratedValue(generator = "jpa-uuid")
     @Column(name = "banner_id", length = 32)
@@ -28,13 +28,14 @@ public class BannerDetail {
     @Column(length = 2)
     @ColumnDefault("0")
     private Integer state;
-    @Column(name = "update_date", columnDefinition = "datetime NOT NULL default  CURRENT_TIMESTAMP")
+    @Column(name = "update_date", columnDefinition = "datetime ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date updateDate;
     @Column(name = "effects_date", columnDefinition = "datetime")
     private Date effectDate;
     @Column(name = "expire_date", columnDefinition = "datetime")
     private Date expireDate;
     private String remark;
+
 
     public String getId() {
         return id;
