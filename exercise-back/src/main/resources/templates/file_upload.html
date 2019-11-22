@@ -1,23 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>文件上传</title>
-</head>
+<html>
+<header>
+    <meta http-equiv="Content-Type" content="multipart/form-data;charset=utf-8"/>
+</header>
 <body>
-<div id="single_upload">
-    <form method="/banner/save/one" action="/upload" enctype="multipart/form-data">
-        <span>单文件上传</span>
-        <input type="file" name="file"><br>
-        <input type="submit" value="提交">
-    </form>
-</div>
-<div id="multi_upload">
-    <form method="post" action="/multiUpload" enctype="multipart/form-data">
-        <input type="file" name="file"><br>
-        <input type="file" name="file"><br>
-        <input type="file" name="file"><br>
-        <input type="submit" value="提交">
+<div>
+    <form method="post" enctype="multipart/form-data" action="http://localhost:8080/banner/save/one">
+        　<input type="file" id="test-image-file" name="file" accept="image/gif, image/jpeg, image/png, image/jpg">
+        　<input type="submit"/>
     </form>
 </div>
 </body>
