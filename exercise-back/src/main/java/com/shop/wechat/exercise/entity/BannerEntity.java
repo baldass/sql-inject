@@ -1,6 +1,5 @@
 package com.shop.wechat.exercise.entity;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -12,11 +11,7 @@ import java.util.Date;
 @Table(name = "banner_detail")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid")
 @Entity
-public class BannerEntity {
-    @Id
-    @GeneratedValue(generator = "jpa-uuid")
-    @Column(name = "banner_id", length = 32)
-    private String id;
+public class BannerEntity extends SuperEntity {
     @Column(name = "title", length = 64)
     private String title;
     @Column(name = "phys_address", nullable = false)
@@ -25,25 +20,14 @@ public class BannerEntity {
     private String urlAddress;
     @Column(name = "forward_address")
     private String forwardAddress;
-    @Column(length = 2)
-    @ColumnDefault("0")
-    private Integer state;
-    @Column(name = "update_date", columnDefinition = "datetime ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Date updateDate;
-    @Column(name = "effects_date", columnDefinition = "datetime")
+
+    @Column(name = "effects_date")
+    @Temporal(TemporalType.TIME)
     private Date effectDate;
-    @Column(name = "expire_date", columnDefinition = "datetime")
+    @Column(name = "expire_date")
+    @Temporal(TemporalType.TIME)
     private Date expireDate;
     private String remark;
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
@@ -67,22 +51,6 @@ public class BannerEntity {
 
     public void setUrlAddress(String urlAddress) {
         this.urlAddress = urlAddress;
-    }
-
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
     }
 
     public Date getEffectDate() {

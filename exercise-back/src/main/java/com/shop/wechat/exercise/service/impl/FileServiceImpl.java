@@ -44,7 +44,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public void downLoadFile(String url, HttpServletResponse response) {
-        String fileName = "C:/Users/40857/Pictures/Saved Pictures/test (1).jpg";
+        String fileName = "C:/Users/40857/Pictures/Saved Pictures/test (2).jpg";
         //todo 验证文件夹和文件是否存在
         File file = new File(fileName);
         // 配置文件下载
@@ -61,6 +61,8 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public String dowLoadBase64File(String url) {
+        String fileName = "C:/Users/40857/Pictures/Saved Pictures/test (3).jpg";
+        File file = new File(fileName);
         return null;
     }
 
