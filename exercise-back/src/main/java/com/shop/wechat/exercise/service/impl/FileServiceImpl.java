@@ -1,7 +1,9 @@
 package com.shop.wechat.exercise.service.impl;
 
+import com.shop.wechat.exercise.common.SystemParam;
 import com.shop.wechat.exercise.service.FileService;
 import com.shop.wechat.exercise.utils.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,6 +15,8 @@ import java.net.URLEncoder;
 
 @Service
 public class FileServiceImpl implements FileService {
+    @Autowired
+    private SystemParam systemParam;
 
     @Override
     public String upLoadFile(MultipartFile file) {

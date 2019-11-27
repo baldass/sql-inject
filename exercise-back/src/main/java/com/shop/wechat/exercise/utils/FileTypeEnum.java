@@ -1,4 +1,4 @@
-package com.shop.wechat.exercise.common;
+package com.shop.wechat.exercise.utils;
 
 /**
  * @description: 常用文件类型

@@ -1,17 +1,18 @@
-package com.shop.wechat.exercise.entity;
+package com.shop.wechat.exercise.common;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * 所有表共有的列
  */
+@EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 public class SuperEntity {
     @Id
@@ -22,7 +23,9 @@ public class SuperEntity {
     @Column(length = 2)
     @ColumnDefault("0")
     private Integer state;
-    @Column(name = "update_date", columnDefinition = "datetime ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @LastModifiedDate
+    @CreatedDate
+    @Column(name = "update_date", columnDefinition = "datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date updateDate;
 
     public String getId() {

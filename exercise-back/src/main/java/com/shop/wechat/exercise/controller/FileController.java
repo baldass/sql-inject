@@ -1,5 +1,6 @@
 package com.shop.wechat.exercise.controller;
 
+import com.shop.wechat.exercise.common.SystemParam;
 import com.shop.wechat.exercise.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,4 +29,6 @@ public class FileController {
     public void showFile(@PathVariable String url, HttpServletResponse response) {
         fileService.showFile(url, response);
     }
+
+
 }
